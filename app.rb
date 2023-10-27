@@ -2,8 +2,16 @@ require "sinatra"
 require "sinatra/reloader"
 
 get("/") do
-  "
-  <h1>Welcome to your Sinatra App!</h1>
-  <p>Define some routes in app.rb</p>
-  "
+  erb(:square)
+end
+
+get("/square") do
+  @num_user = params.fetch("number").to_i
+  @num_square = params.fetch("number").to_f ** 2
+  erb(:square_results)
+end
+
+
+get("/square/new") do
+  erb(:square)
 end
